@@ -1,12 +1,179 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Pro Glass & Wash</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRO GLASS & WASH - Entretien et Esthétique Automobile</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Pro Glass & Wash</h1>
-  <p>Lavage automobile professionnel</p>
-  <p>Contact : WhatsApp</p>
+    <!-- LOADER -->
+    <div id="loader" class="loader">
+        <img src="logo.png" alt="Logo PRO GLASS & WASH" class="loader-logo">
+    </div>
+
+    <!-- SITE CONTENT -->
+    <div id="site-content" class="site-content hidden">
+
+        <!-- HERO SECTION -->
+        <header class="hero">
+            <nav class="navbar">
+                <div class="nav-logo">
+                </div>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#galerie">Galerie</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <img src="title.png" alt="PRO GLASS & WASH"
+                    class="hero-title-img">
+                    <p class="hero-subtitle">Entretien & Esthétique Automobile </p>
+                    <div class="hero-buttons">
+                  <button class="cta-button" id="btn-reservation">Réservation</button>
+                  <button class="cta-button outline" id="btn-devis">Devis gratuit</button>
+                </div>
+                <div class="hero-image">
+                </div>
+            </div>
+        </header>
+
+        <!-- ICONES METIERS -->
+        <section class="services-icons">
+            <div class="container">
+                <div class="icons-grid">
+                    <div class="service-icon"><div class="icon-circle">🚗</div><span>Lavage</span></div>
+                    <div class="service-icon"><div class="icon-circle">✨</div><span>Detailing</span></div>
+                    <div class="service-icon"><div class="icon-circle">🛠️</div><span>Carrosserie</span></div>
+                    <div class="service-icon"><div class="icon-circle">🔍</div><span>Pare-brise express</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOS SERVICES -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2 class="section-title">Nos Services</h2>
+                <div class="services-grid">
+                    <div class="service-card"><h3>Lavage 100% manuel</h3></div>
+                    <div class="service-card"><h3>Detailing</h3></div>
+                    <div class="service-card"><h3>Carrosserie</h3></div>
+                    <div class="service-card"><h3>Pare-brise express</h3></div>
+                    <div class="service-card"><h3>Polissage / Lustrage</h3></div>
+                    <div class="service-card"><h3>Film PPF</h3></div>
+                    <div class="service-card"><h3>Céramique</h3></div>
+                    <div class="service-card"><h3>Covering</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POURQUOI NOUS CHOISIR -->
+        <section class="why-choose-us">
+            <div class="container">
+                <div class="why-content">
+                    <div class="why-text">
+                        <h2>Pourquoi choisir PRO GLASS & WASH ?</h2>
+                        <div class="features-list">
+                            <div class="feature">
+                                <div class="feature-icon">🏆</div>
+                                <div>
+                                    <h4>Qualité Professionnelle</h4>
+                                    <p>Techniciens certifiés et passionnés d'automobile.</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">🕒</div>
+                                <div>
+                                    <h4>Service Rapide</h4>
+                                    <p>Interventions soignées, délais maîtrisés.</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">💎</div>
+                                <div>
+                                    <h4>Finition Premium</h4>
+                                    <p>Chaque véhicule traité avec un soin d’exception.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price-badge">
+                        <div class="badge-content">
+                            <span class="badge-text">Excellence</span>
+                            <span class="badge-subtitle">Garantie</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERIE -->
+        <section id="galerie" class="galerie-section">
+            <div class="container">
+                <h2 class="section-title">Galerie</h2>
+                <div class="galerie-grid">
+                    <div class="galerie-item"><img src="images/galerie1.jpg" alt="Galerie 1"></div>
+                    <div class="galerie-item"><img src="images/galerie2.jpg" alt="Galerie 2"></div>
+                    <div class="galerie-item"><img src="images/galerie3.jpg" alt="Galerie 3"></div>
+                    <div class="galerie-item"><img src="images/galerie4.jpg" alt="Galerie 4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Nous Contacter</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-block">
+                            <h4>📍 Adresse</h4>
+                            <p>Adresse fournie dans le flyer</p>
+                        </div>
+                        <div class="info-block">
+                            <h4>🕒 Horaires</h4>
+                            <p>Horaires fournis dans le flyer</p>
+                        </div>
+                        <div class="info-block">
+                            <h4>📞 Téléphone</h4>
+                            <p>Numéros à insérer selon flyer</p>
+                        </div>
+                    </div>
+                    <div class="qr-codes">
+                        <div class="qr-code">
+                            <div class="qr-placeholder">QR</div>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="qr-code">
+                            <div class="qr-placeholder">QR</div>
+                            <span>Instagram</span>
+                        </div>
+                        <div class="qr-code">
+                            <div class="qr-placeholder">QR</div>
+                            <span>TikTok</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                        <span>PRO GLASS & WASH</span>
+                    </div>
+                    <div class="footer-text">
+                        <p>&copy; 2024 PRO GLASS & WASH. Tous droits réservés.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
