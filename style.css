@@ -563,3 +563,67 @@ body {
         padding-top: 20px;
     }
 }
+@media (max-width: 768px) {
+
+  .hero-content {
+    padding: 50px 20px 30px;
+  }
+
+  .hero-title-img {
+    width: 280px;
+    margin-bottom: 15px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 12px;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 768px) {
+
+  .services-icons,
+  .services-section,
+  .why-choose-us,
+  .contact-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 768px) {
+
+  .icons-grid,
+  .services-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 0;
+  }
+
+  .footer-text {
+    font-size: 0.85rem;
+  }
+}
