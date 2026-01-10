@@ -223,10 +223,6 @@ body {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 60px;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .services-grid {
@@ -626,4 +622,59 @@ body {
   .footer-text {
     font-size: 0.85rem;
   }
+}
+.hero-title-img {
+  font-family: 'Chewy', cursive;
+}
+
+.section-title,
+.form-section-title {
+  font-family: 'Chewy', cursive;
+  letter-spacing: 1px;
+}
+/* TITRES SOUS LES BULLES (SERVICES ICONS) */
+.services-icons span {
+    font-family: 'Chewy', cursive;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    display: block;
+}
+.services-icons span {
+    text-shadow: 0 2px 8px rgba(0, 212, 255, 0.25);
+}
+/* TITRE AVEC LOGOS – NOS SERVICES */
+.section-title.with-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.section-title.with-icons .title-logo {
+    height: 2em; /* clé : suit la taille du texte */
+    width: auto;
+    opacity: 0.85;
+}
+
+.section-title.with-icons .title-logo.left {
+    margin-right: 6px;
+}
+
+.section-title.with-icons .title-logo.right {
+    margin-left: 6px;
+}
+@media (max-width: 768px) {
+    .section-title.with-icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .section-title.with-icons .title-logo {
+        height: 1.2em;
+        display: inline-block;
+    }
 }
