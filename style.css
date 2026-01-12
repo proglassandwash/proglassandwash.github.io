@@ -201,15 +201,22 @@ body {
 .icon-circle {
     width: 110px;
     height: 110px;
-    border-radius: 50%;
-    background: transparent;
+    border-radius: 22px;
+    background: rgba(20, 20, 20, 0.85); /* fallback solide */
+    border: 1px solid rgba(0, 212, 255, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow:
-        0 0 0 2px rgba(0,212,255,0.25),
-        0 0 35px rgba(0,212,255,0.25);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
+@supports (backdrop-filter: blur(12px)) {
+  .icon-circle {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
 
 .service-icon:hover .icon-circle {
     transform: scale(1.1);
