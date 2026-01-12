@@ -250,11 +250,12 @@ body {
 }
 
 .service-card {
-    background: var(--dark-card);
+    background: linear-gradient(180deg, #121a1f, #0b0f12);
     padding: 30px;
     border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0, 212, 255, 0.2);
+    border: 1px solid rgba(0,212,255,0.15);
+    text-align: center;
 }
 
 .service-card:hover {
@@ -262,8 +263,9 @@ body {
     box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
 }
 
-.service-card h3 {
-    color: var(--electric-blue);
+.service-card h3
+    .service-card h3 {
+    color: hsla(245, 98%, 47%, 0.85);
     margin-bottom: 15px;
     font-size: 1.3rem;
 }
@@ -271,6 +273,10 @@ body {
 .service-card p {
     color: var(--text-gray);
     margin-bottom: 20px;
+}
+.service-card {
+    text-decoration: none;
+    color: inherit;
 }
 
 .price {
@@ -696,4 +702,134 @@ body {
         display: inline-block;
     }
 }
+.service-detail {
+    padding: 80px 0;
+    background: #0f0f0f;
+}
 
+.service-detail p {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: auto;
+    color: rgba(255,255,255,0.7);
+}
+.service-detail ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.service-detail li {
+    margin-bottom: 12px;
+    padding-left: 22px;
+    position: relative;
+    color: rgba(255,255,255,0.75);
+}
+
+.service-detail li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--electric-blue);
+}
+.service-detail {
+    text-align: center;
+}
+
+/* Le bloc UL est centré */
+.service-detail ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px auto;
+    display: inline-block; /* 🔑 LA CLÉ */
+    text-align: left;      /* texte lisible */
+}
+
+/* Les lignes */
+.service-detail li {
+    margin-bottom: 12px;
+    padding-left: 24px;
+    position: relative;
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+}
+
+/* Le petit symbole */
+.service-detail li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--electric-blue);
+    font-weight: bold;
+}
+/* GALERIE */
+.galerie-section {
+  padding: 100px 0;
+  background: var(--dark-bg);
+}
+
+.galerie-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.galerie-item {
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.galerie-item img,
+.galerie-item video {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  transition: transform 0.4s ease;
+}
+
+.galerie-item:hover img,
+.galerie-item:hover video {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .galerie-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .galerie-grid {
+    column-count: 1;
+  }
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox img,
+.lightbox video {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}

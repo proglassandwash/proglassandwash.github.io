@@ -117,3 +117,34 @@ window.addEventListener("scroll", () => {
         navbar.style.backdropFilter = "none";
     }
 });
+const galleryItems = document.querySelectorAll(".galerie-item");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.querySelector(".lightbox-img");
+const lightboxVideo = document.querySelector(".lightbox-video");
+const closeBtn = document.querySelector(".lightbox-close");
+
+galleryItems.forEach(item => {
+  item.addEventListener("click", () => {
+    const img = item.querySelector("img");
+    const video = item.querySelector("video");
+
+    lightbox.style.display = "flex";
+
+    if (img) {
+      lightboxImg.src = img.src;
+      lightboxImg.style.display = "block";
+      lightboxVideo.style.display = "none";
+    }
+
+    if (video) {
+      lightboxVideo.src = video.src;
+      lightboxVideo.style.display = "block";
+      lightboxImg.style.display = "none";
+    }
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+  lightboxVideo.pause();
+});
