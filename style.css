@@ -209,6 +209,12 @@ body {
     font-size: 20px;
     transition: transform 0.3s ease;
 }
+.icon-circle img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+}
+
 
 .service-icon:hover .icon-circle {
     transform: scale(1.1);
