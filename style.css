@@ -684,8 +684,8 @@ body {
 @media (max-width: 768px) {
 
   .services-icons .icon-circle img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
   }
 
