@@ -5,11 +5,11 @@
 }
 
 :root {
-    --electric-blue: #00D4FF;
+    --electric-blue: oklab(34.327000000000005% 0.00287 -0.01548);
     --dark-bg: #0A0A0A;
     --dark-card: #1A1A1A;
-    --text-white: #FFFFFF;
-    --text-gray: #CCCCCC;
+    --text-white: #bfbfbfd3;
+    --text-gray: #9e0000;
     --accent-gradient: linear-gradient(135deg, #00D4FF, #0099CC);
     --premium-gold: #FFD700;
 }
@@ -139,8 +139,10 @@ body {
 
 .cta-button {
     position: relative;
-    background: var(--accent-gradient);
-    border: none;
+    background: rgba(1, 1, 1, 0.398);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
     padding: 18px 40px;
     border-radius: 50px;
     color: var(--text-white);
@@ -150,6 +152,7 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease;
 }
+
 .hero-buttons {
     display: flex;
     gap: 15px;
@@ -199,15 +202,15 @@ body {
 }
 
 .icon-circle {
-    width: 110px;
-    height: 110px;
+    width: 210px;
+    height: 210px;
     border-radius: 22px;
     background: rgba(20, 20, 20, 0.85); /* fallback solide */
-    border: 1px solid rgba(0, 212, 255, 0.25);
+    border: 2px solid rgba(6, 37, 162, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 1 40px 80px rgba(0,0,0,0.4);
 }
 @supports (backdrop-filter: blur(12px)) {
   .icon-circle {
@@ -216,6 +219,13 @@ body {
     -webkit-backdrop-filter: blur(12px);
   }
 }
+.icon-circle img {
+    width: 150%;
+    height: auto;
+    max-height: 150%;
+    object-fit: contain;
+}
+
 
 
 .service-icon:hover .icon-circle {
@@ -650,7 +660,7 @@ body {
     display: block;
 }
 .services-icons span {
-    text-shadow: 0 2px 8px rgba(0, 212, 255, 0.25);
+    text-shadow: 0 2px 8px rgba(1, 18, 149, 0.427);
 }
 /* TITRE AVEC LOGOS – NOS SERVICES */
 .section-title.with-icons {
