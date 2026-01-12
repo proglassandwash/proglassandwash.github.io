@@ -678,20 +678,4 @@ body {
         display: inline-block;
     }
 }
-/* =========================
-   FIX ICONES SERVICES - MOBILE (CORRECT)
-========================= */
-@media (max-width: 768px) {
 
-  .services-icons .icon-circle img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-  }
-
-  .services-icons .icon-circle {
-    width: 90px;
-    height: 90px;
-  }
-
-}
