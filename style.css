@@ -679,17 +679,19 @@ body {
     }
 }
 /* =========================
-   FIX TAILLE IMAGES SERVICES - MOBILE
+   FIX ICONES SERVICES - MOBILE (CORRECT)
 ========================= */
 @media (max-width: 768px) {
 
-  .service-card img {
-    max-width: 100%;
-    height: auto;
-    max-height: 220px;
+  .services-icons .icon-circle img {
+    width: 60px;
+    height: 60px;
     object-fit: contain;
-    margin: 0 auto;
-    display: block;
+  }
+
+  .services-icons .icon-circle {
+    width: 90px;
+    height: 90px;
   }
 
 }
