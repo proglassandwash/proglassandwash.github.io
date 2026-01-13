@@ -55,30 +55,20 @@ body {
 }
 
 /* HERO SECTION */
-.hero {
-    min-height: auto;
-    background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
-    position: relative;
-    overflow: hidden;
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  z-index: 1;
 }
 .hero-title-img {
     width: 420px;
     max-width: 90%;
     height: auto;
     margin-bottom: 20px;
-}
-
-.hero::before {
-     pointer-events: none;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad"><stop offset="0%" stop-color="%2300D4FF" stop-opacity="0.1"/><stop offset="100%" stop-color="%2300D4FF" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="300" fill="url(%23grad)"/><circle cx="800" cy="800" r="400" fill="url(%23grad)"/></svg>');
-    background-size: cover;
-    z-index: 1;
 }
 
 .navbar {
@@ -111,15 +101,31 @@ body {
 .nav-links a:hover {
     color: var(--electric-blue);
 }
+
 .hero-content {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 80px 40px;
-   position: relative;
-    z-index: 2;
+  padding:80px 40px;
+  position: relative;
+  z-index: 3;
+  animation: heroFadeUp 1.2s ease-out both;
+  animation-delay: 0.3s;
 }
+
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .hero-text h1 {
     font-size: 3.5rem;
@@ -180,7 +186,24 @@ body {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
 }
-
+@keyframes heroZoom {
+  0% {
+    transform: scale(1);
+    filter: brightness(1) contrast(1);
+  }
+  100% {
+    transform: scale(1.05);
+    filter: brightness(1.05) contrast(1.1);
+  }
+}
+@keyframes glowMove {
+  0% {
+    background-position: 60% 40%;
+  }
+  100% {
+    background-position: 80% 20%;
+  }
+}
 /* SERVICES ICONS */
 .services-icons {
     padding: 80px 0;
