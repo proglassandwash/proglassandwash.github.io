@@ -60,16 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     navLinks.forEach(link => {
         link.addEventListener("click", e => {
-            e.preventDefault();
-            const targetId = link.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
+            const href = link.getAttribute("href");
 
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+            // On ne bloque QUE les ancres internes
+            if (href.startsWith("#")) {
+                e.preventDefault();
+                const targetSection = document.querySelector(href);
+
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
             }
+            // sinon (galerie.html, index.html, etc) → navigation normale
         });
     });
 });
@@ -131,7 +136,7 @@ galleryItems.forEach(item => {
     lightbox.style.display = "flex";
 
     if (img) {
-      lightboxImg.src = img.src;
+      lightboxVideo.src = video.querySelector("source").src;
       lightboxImg.style.display = "block";
       lightboxVideo.style.display = "none";
     }
@@ -142,9 +147,4 @@ galleryItems.forEach(item => {
       lightboxImg.style.display = "none";
     }
   });
-});
-
-closeBtn.addEventListener("click", () => {
-  lightbox.style.display = "none";
-  lightboxVideo.pause();
 });

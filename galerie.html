@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Galerie – PRO GLASS & WASH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="galerie.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR (la même que sur index.html) -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="logo2.png" alt="Pro Glass & Wash">
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="galerie.html" class="active">Galerie</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- GALERIE -->
+   <section id="galerie" class="galerie-section">
+  <div class="container">
+    <h2 class="section-title">Galerie</h2>
+
+    <div class="galerie-grid">
+      <!-- IMAGES -->
+      <div class="galerie-item" data-type="image" data-src="images/galerie1.jpg">
+  <img src="images/galerie1.jpg" alt="">
+</div>
+
+<div class="galerie-item" data-type="image" data-src="images/galerie2.jpg">
+  <img src="images/galerie2.jpg" alt="">
+</div>
+
+<div class="galerie-item" data-type="image" data-src="images/galerie3.jpg">
+  <img src="images/galerie3.jpg" alt="">
+</div>
+
+  <div class="galerie-item" data-type="image" data-src="images/galerie4.jpg">
+  <img src="images/galerie4.jpg" alt="">
+</div>
+
+     <div class="galerie-item" data-type="image" data-src="images/galerie5.jpg">
+  <img src="images/galerie5.jpg" alt="">
+</div>
+
+     <div class="galerie-item" data-type="image" data-src="images/galerie6.jpg">
+  <img src="images/galerie6.jpg" alt="">
+</div>
+
+      <!-- VIDEOS -->
+  <div class="galerie-item video" 
+     data-type="video" 
+     data-src="images/video1.mp4">
+
+  <img src="images/video1-thumb.jpg" alt="Vidéo lavage auto">
+  <span class="play-icon">▶</span>
+
+</div>
+
+<div class="galerie-item video" 
+     data-type="video" 
+     data-src="images/video2.mp4">
+
+  <img src="images/video2-thumb.jpg" alt="Vidéo lavage auto">
+  <span class="play-icon">▶</span>
+
+</div>
+
+</div>
+</div>
+</section>
+      
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img">
+    <video class="lightbox-video" controls></video>
+  </div>
+
+  <script src="galerie.js"></script>
+</body>
+</html>

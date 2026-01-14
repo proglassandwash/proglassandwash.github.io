@@ -63,6 +63,7 @@ body {
   height: 70%;
   object-fit: cover;
   z-index: 1;
+  pointer-events: none;
 }
 .hero-title-img {
     width: 420px;
@@ -997,3 +998,10 @@ body {
     border-radius: 12px;
   }
 }
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+}
+
