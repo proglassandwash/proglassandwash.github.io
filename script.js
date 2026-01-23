@@ -257,3 +257,272 @@ galleryItems.forEach(item => {
   }
 
 })();
+/* ==========================================
+   SECTION CARROSSERIE - JAVASCRIPT
+   À AJOUTER À LA FIN DE script.js
+   ========================================== */
+
+(function() {
+  'use strict';
+
+  // Configuration
+  const PHONE_NUMBER = '33670378324'; // Format international sans + ni espaces
+  const EMAIL_ADDRESS = 'proglassandwash@gmail.com';
+
+  // Elements DOM
+  const form = document.getElementById('carContactForm');
+  const btnEmail = document.getElementById('carBtnEmail');
+  const btnWhatsApp = document.getElementById('carBtnWhatsApp');
+  const photosInput = document.getElementById('carPhotos');
+  const photosPreview = document.getElementById('carPhotosPreview');
+
+  if (!form || !btnEmail || !btnWhatsApp) {
+    console.warn('Section Carrosserie: Éléments DOM manquants');
+    return;
+  }
+
+  /* ==========================================
+     PREVIEW PHOTOS
+     ========================================== */
+
+  photosInput.addEventListener('change', (e) => {
+    const files = Array.from(e.target.files).slice(0, 5); // Max 5 photos
+    photosPreview.innerHTML = ''; // Reset
+
+    if (files.length === 0) return;
+
+    files.forEach((file, index) => {
+      if (!file.type.startsWith('image/')) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const div = document.createElement('div');
+        div.className = 'car-photo-item';
+        div.innerHTML = `
+          <img src="${event.target.result}" alt="Photo ${index + 1}">
+          <button type="button" class="car-photo-remove" data-index="${index}">×</button>
+        `;
+        photosPreview.appendChild(div);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // Supprimer une photo
+  photosPreview.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('car-photo-remove')) return;
+    e.target.closest('.car-photo-item').remove();
+  });
+
+  /* ==========================================
+     VALIDATION BASIQUE
+     ========================================== */
+
+  function validateForm() {
+    const nom = document.getElementById('carNom').value.trim();
+    const tel = document.getElementById('carTel').value.trim();
+    const email = document.getElementById('carEmail').value.trim();
+    const message = document.getElementById('carMessage').value.trim();
+
+    if (!nom || !tel || !email || !message) {
+      alert('Veuillez remplir tous les champs obligatoires.');
+      return false;
+    }
+
+    return { nom, tel, email, message };
+  }
+
+  /* ==========================================
+     ENVOI PAR EMAIL (MAILTO)
+     ========================================== */
+
+  btnEmail.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const data = validateForm();
+    if (!data) return;
+
+    const subject = encodeURIComponent('Demande de devis Carrosserie');
+    const body = encodeURIComponent(
+      `Nom : ${data.nom}\n` +
+      `Téléphone : ${data.tel}\n` +
+      `Email : ${data.email}\n\n` +
+      `Travaux souhaités :\n${data.message}\n\n` +
+      `---\n` +
+      `Note : Photos à joindre manuellement si nécessaire.`
+    );
+
+    const mailtoLink = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
+  });
+
+  /* ==========================================
+     ENVOI PAR WHATSAPP
+     ========================================== */
+
+  btnWhatsApp.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const data = validateForm();
+    if (!data) return;
+
+    const text = encodeURIComponent(
+      `*Demande de devis Carrosserie*\n\n` +
+      `Nom : ${data.nom}\n` +
+      `Téléphone : ${data.tel}\n` +
+      `Email : ${data.email}\n\n` +
+      `Travaux souhaités :\n${data.message}\n\n` +
+      `_Photos à envoyer séparément si besoin_`
+    );
+
+    const whatsappLink = `https://wa.me/${PHONE_NUMBER}?text=${text}`;
+    window.open(whatsappLink, '_blank');
+  });
+
+  /* ==========================================
+     LIMITE 5 PHOTOS
+     ========================================== */
+
+  photosInput.addEventListener('change', (e) => {
+    if (e.target.files.length > 5) {
+      alert('Maximum 5 photos autorisées.');
+      e.target.value = '';
+      photosPreview.innerHTML = '';
+    }
+  });
+
+})();
+/* ==========================================
+   SECTION PARE-BRISE - JAVASCRIPT
+   À AJOUTER À LA FIN DE script.js
+   ========================================== */
+
+(function() {
+  'use strict';
+
+  // ========================================
+  // CONFIGURATION - À PERSONNALISER
+  // ========================================
+  const PB_WHATSAPP_NUMBER = '33670378324'; // Format international sans + ni espaces
+  const PB_EMAIL = 'proglassandwash@gmail.com';
+  // ========================================
+
+  // Elements DOM
+  const cards = document.querySelectorAll('.pb-card .pb-card-btn');
+  const formWrapper = document.getElementById('pbFormWrapper');
+  const formTitle = document.getElementById('pbFormTitle');
+  const serviceTypeInput = document.getElementById('pbServiceType');
+  const btnWhatsApp = document.getElementById('pbBtnWhatsApp');
+  const btnEmail = document.getElementById('pbBtnEmail');
+
+  if (!formWrapper || !cards.length) {
+    console.warn('Section Pare-brise: Éléments DOM manquants');
+    return;
+  }
+
+  /* ==========================================
+     OUVERTURE FORMULAIRE
+     ========================================== */
+
+  cards.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.action; // 'devis' ou 'cession'
+      
+      // Mise à jour titre et type
+      if (action === 'devis') {
+        formTitle.textContent = 'Demande de devis pare-brise';
+        serviceTypeInput.value = 'devis';
+      } else {
+        formTitle.textContent = 'Demande de prise en charge assurance';
+        serviceTypeInput.value = 'cession';
+      }
+
+      // Affichage formulaire
+      formWrapper.style.display = 'block';
+      
+      // Scroll vers formulaire
+      setTimeout(() => {
+        formWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    });
+  });
+
+  /* ==========================================
+     VALIDATION FORMULAIRE
+     ========================================== */
+
+  function validateForm() {
+    const nom = document.getElementById('pbNom').value.trim();
+    const tel = document.getElementById('pbTel').value.trim();
+
+    if (!nom || !tel) {
+      alert('Veuillez renseigner au minimum votre nom et téléphone.');
+      return false;
+    }
+
+    return {
+      nom,
+      tel,
+      email: document.getElementById('pbEmail').value.trim(),
+      marque: document.getElementById('pbMarque').value.trim(),
+      immat: document.getElementById('pbImmat').value.trim(),
+      message: document.getElementById('pbMessage').value.trim(),
+      serviceType: serviceTypeInput.value
+    };
+  }
+
+  /* ==========================================
+     ENVOI WHATSAPP
+     ========================================== */
+
+  btnWhatsApp.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const data = validateForm();
+    if (!data) return;
+
+    const serviceLabel = data.serviceType === 'devis' 
+      ? 'Demande de devis' 
+      : 'Demande de prise en charge assurance';
+
+    let text = `*${serviceLabel} - Pare-brise*\n\n`;
+    text += `Nom : ${data.nom}\n`;
+    text += `Téléphone : ${data.tel}\n`;
+    if (data.email) text += `Email : ${data.email}\n`;
+    if (data.marque) text += `Véhicule : ${data.marque}\n`;
+    if (data.immat) text += `Immatriculation : ${data.immat}\n`;
+    if (data.message) text += `\nMessage :\n${data.message}`;
+
+    const whatsappLink = `https://wa.me/${PB_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappLink, '_blank');
+  });
+
+  /* ==========================================
+     ENVOI EMAIL
+     ========================================== */
+
+  btnEmail.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const data = validateForm();
+    if (!data) return;
+
+    const serviceLabel = data.serviceType === 'devis' 
+      ? 'Demande de devis' 
+      : 'Demande de prise en charge assurance';
+
+    const subject = encodeURIComponent(`${serviceLabel} - Pare-brise`);
+    
+    let body = `Nom : ${data.nom}\n`;
+    body += `Téléphone : ${data.tel}\n`;
+    if (data.email) body += `Email : ${data.email}\n`;
+    if (data.marque) body += `Véhicule : ${data.marque}\n`;
+    if (data.immat) body += `Immatriculation : ${data.immat}\n`;
+    body += `\nService : ${serviceLabel}\n`;
+    if (data.message) body += `\nMessage :\n${data.message}`;
+
+    const mailtoLink = `mailto:${PB_EMAIL}?subject=${subject}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  });
+
+})();
