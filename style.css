@@ -3266,199 +3266,1370 @@ body {
     padding: 30px 25px;
   }
 }
-/* WHY CHOOSE US */
-.why-choose-us {
-    padding: 100px 0;
-    background: var(--dark-card);
+/* ==========================================
+   SECTION COVERING • FILM PPF • VITRES TEINTÉES
+   Classes préfixées : cf-* (covering film)
+   À AJOUTER À LA FIN DE style.css
+   ========================================== */
+
+#service-covering.cf-section {
+  padding: 60px 0;
+  background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
 }
 
-.why-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 60px;
-    align-items: center;
+#service-covering .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
-.features-list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 40px;
+/* Titre */
+#service-covering .section-title.with-icons.glass-style {
+  font-size: 1.5rem;
+  padding: 10px 30px;
+  margin-bottom: 20px;
 }
 
-.feature {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
+#service-covering .title-logo {
+  width: 38px;
+  height: 38px;
 }
 
-.feature-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    background: var(--accent-gradient);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
+.cf-intro {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 800px;
+  margin: 0 auto 50px;
+  text-align: center;
+  line-height: 1.6;
 }
 
-.feature h4 {
-    color: var(--electric-blue);
-    margin-bottom: 5px;
+/* ==========================================
+   LAYOUT PRINCIPAL : IMAGES + CARDS
+   ========================================== */
+
+.cf-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: start;
 }
 
-.price-badge {
-    display: flex;
-    justify-content: center;
+/* ==========================================
+   GALERIE IMAGES (GAUCHE)
+   ========================================== */
+
+.cf-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  position: sticky;
+  top: 20px;
 }
 
-.badge-content {
-    background: var(--accent-gradient);
-    padding: 30px;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    animation: rotate 10s linear infinite;
+.cf-gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.cf-gallery-large {
+  grid-column: span 2;
+  aspect-ratio: 16/9;
 }
 
-.badge-text {
-    font-weight: bold;
-    font-size: 1.2rem;
+.cf-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.badge-subtitle {
-    font-size: 0.9rem;
-    opacity: 0.8;
+.cf-gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 123, 255, 0.3);
 }
 
-/* DETAILED SERVICES */
-.detailed-services {
-    padding: 100px 0;
+.cf-gallery-item:hover img {
+  transform: scale(1.08);
 }
 
-.detailed-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+/* Label sur image */
+.cf-gallery-label {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
 }
 
-.detailed-card {
-    background: var(--dark-card);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    border: 2px solid rgba(0, 213, 255, 0.753);
+.cf-gallery-item:hover .cf-gallery-label {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.detailed-card.featured {
-    border-color: var(--electric-blue);
-    transform: scale(1.05);
+/* ==========================================
+   CARDS SERVICES (DROITE)
+   ========================================== */
+
+.cf-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.detailed-card:hover {
-    transform: translateY(-5px);
+.cf-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 28px 25px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.detailed-card.featured:hover {
-    transform: scale(1.05) translateY(-5px);
+.cf-card:hover {
+  transform: translateX(6px);
+  border-color: rgba(0, 123, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
 }
 
-.card-header {
-    background: var(--accent-gradient);
-    padding: 25px;
-    text-align: center;
+.cf-card-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.12);
+  border-radius: 12px;
+  color: #00d4ff;
+  margin-bottom: 18px;
+  transition: all 0.3s ease;
 }
 
-.card-header h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+.cf-card:hover .cf-card-icon {
+  background: rgba(0, 212, 255, 0.2);
+  transform: scale(1.05);
 }
 
-.pack-price {
-    font-size: 2rem;
-    font-weight: bold;
+.cf-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
 }
 
-.service-list {
-    padding: 30px;
-    list-style: none;
+.cf-card p {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
 
-.service-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    padding-left: 25px;
+/* Liste des bénéfices */
+.cf-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.service-list li:before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--electric-blue);
-    font-weight: bold;
+.cf-benefits li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
 }
 
-/* CONTACT */
-.contact-section {
-    padding: 100px 0;
-    background: var(--dark-card);
+.cf-benefits li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #00d4ff;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 60px;
+/* ==========================================
+   BANDEAU BAS DISCRET
+   ========================================== */
+
+.cf-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 30px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
+.cf-footer-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.cf-footer-badge:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 123, 255, 0.3);
+  color: #00d4ff;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 968px) {
+  .cf-main-layout {
+    grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .cf-gallery {
+    position: static;
+    grid-template-columns: 1fr;
+  }
+
+  .cf-gallery-large {
+    grid-column: span 1;
+  }
 }
 
-.info-block h4 {
-    color: var(--electric-blue);
-    margin-bottom: 15px;
-    font-size: 1.2rem;
+@media (max-width: 768px) {
+  #service-covering.cf-section {
+    padding: 50px 0;
+  }
+
+  #service-covering .container {
+    padding: 0 25px;
+  }
+
+  #service-covering .section-title.with-icons.glass-style {
+    font-size: 1.3rem;
+    padding: 8px 24px;
+  }
+
+  #service-covering .title-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .cf-intro {
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  .cf-main-layout {
+    gap: 35px;
+    margin-bottom: 50px;
+  }
+
+  .cf-gallery {
+    gap: 12px;
+  }
+
+  .cf-cards {
+    gap: 16px;
+  }
+
+  .cf-card {
+    padding: 24px 22px;
+  }
+
+  .cf-card-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .cf-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .cf-footer {
+    gap: 15px;
+    padding: 25px 0 0;
+  }
+
+  .cf-footer-badge {
+    font-size: 0.8rem;
+    padding: 8px 20px;
+  }
 }
 
-.qr-codes {
-    display: flex;
-    flex-direction: column;
+@media (max-width: 480px) {
+  #service-covering.cf-section {
+    padding: 40px 0;
+  }
+
+  #service-covering .container {
+    padding: 0 20px;
+  }
+
+  #service-covering .section-title.with-icons.glass-style {
+    font-size: 1.1rem;
+    padding: 7px 20px;
+  }
+
+  #service-covering .title-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .cf-main-layout {
     gap: 30px;
-    align-items: center;
-}
+    margin-bottom: 40px;
+  }
 
-.qr-code {
-    text-align: center;
-}
+  .cf-card {
+    padding: 22px 20px;
+  }
 
-.qr-placeholder {
-    width: 120px;
-    height: 120px;
-    background: var(--accent-gradient);
-    display: flex;
-    align-items: center;
+  .cf-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .cf-footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cf-footer-badge {
+    width: 100%;
+    max-width: 280px;
     justify-content: center;
-    border-radius: 15px;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  }
+}
+/* ==========================================
+   SECTION POLISSAGE • LUSTRAGE • CÉRAMIQUE
+   Classes préfixées : plc-*
+   À AJOUTER À LA FIN DE style.css
+   ========================================== */
+
+#service-polissage.plc-section {
+  padding: 60px 0;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
 }
 
+#service-polissage .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* Titre */
+#service-polissage .section-title.with-icons.glass-style {
+  font-size: 1.5rem;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+}
+
+#service-polissage .title-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.plc-intro {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 850px;
+  margin: 0 auto 50px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   LAYOUT PRINCIPAL : IMAGES + CARDS
+   ========================================== */
+
+.plc-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: start;
+}
+
+/* ==========================================
+   GALERIE IMAGES (GAUCHE)
+   ========================================== */
+
+.plc-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  position: sticky;
+  top: 20px;
+}
+
+.plc-gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Fallback Android si backdrop-filter non supporté */
+  background: rgba(20, 20, 20, 0.8);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .plc-gallery-item {
+    background: transparent;
+  }
+}
+
+.plc-gallery-large {
+  grid-column: span 2;
+  aspect-ratio: 16/9;
+}
+
+.plc-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.plc-gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 123, 255, 0.25);
+  border-color: rgba(0, 123, 255, 0.3);
+}
+
+.plc-gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* Overlay + Label sur image */
+.plc-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.plc-gallery-item:hover .plc-gallery-overlay {
+  opacity: 1;
+}
+
+.plc-gallery-label {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .plc-gallery-label {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==========================================
+   CARDS SERVICES (DROITE)
+   ========================================== */
+
+.plc-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.plc-card {
+  /* Fallback Android */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 28px 25px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+@supports (backdrop-filter: blur(15px)) {
+  .plc-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+}
+
+.plc-card:hover {
+  transform: translateX(6px);
+  border-color: rgba(0, 123, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+}
+
+.plc-card-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.12);
+  border-radius: 12px;
+  color: #00d4ff;
+  margin-bottom: 18px;
+  transition: all 0.3s ease;
+}
+
+.plc-card:hover .plc-card-icon {
+  background: rgba(0, 212, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.plc-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.plc-card p {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* Pills de bénéfices */
+.plc-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.plc-benefit-pill {
+  display: inline-block;
+  padding: 7px 14px;
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #00d4ff;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+.plc-benefit-pill:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Note discrète */
+.plc-card-note {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   BANDEAU BAS DISCRET
+   ========================================== */
+
+.plc-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 30px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.plc-footer-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  /* Fallback Android */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .plc-footer-badge {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.plc-footer-badge:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 123, 255, 0.3);
+  color: #00d4ff;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 968px) {
+  .plc-main-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .plc-gallery {
+    position: static;
+    grid-template-columns: 1fr;
+  }
+
+  .plc-gallery-large {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  #service-polissage.plc-section {
+    padding: 50px 0;
+  }
+
+  #service-polissage .container {
+    padding: 0 25px;
+  }
+
+  #service-polissage .section-title.with-icons.glass-style {
+    font-size: 1.3rem;
+    padding: 8px 24px;
+  }
+
+  #service-polissage .title-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .plc-intro {
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  .plc-main-layout {
+    gap: 35px;
+    margin-bottom: 50px;
+  }
+
+  .plc-gallery {
+    gap: 12px;
+  }
+
+  .plc-cards {
+    gap: 16px;
+  }
+
+  .plc-card {
+    padding: 24px 22px;
+  }
+
+  .plc-card-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .plc-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .plc-benefits {
+    gap: 6px;
+  }
+
+  .plc-benefit-pill {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .plc-footer {
+    gap: 15px;
+    padding: 25px 0 0;
+  }
+
+  .plc-footer-badge {
+    font-size: 0.8rem;
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #service-polissage.plc-section {
+    padding: 40px 0;
+  }
+
+  #service-polissage .container {
+    padding: 0 20px;
+  }
+
+  #service-polissage .section-title.with-icons.glass-style {
+    font-size: 1.1rem;
+    padding: 7px 20px;
+  }
+
+  #service-polissage .title-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .plc-main-layout {
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .plc-card {
+    padding: 22px 20px;
+  }
+
+  .plc-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .plc-footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .plc-footer-badge {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+/* ==========================================
+   SECTION POURQUOI NOUS CHOISIR - VERSION AMÉLIORÉE
+   Classes préfixées : why-*
+   REMPLACE LE CSS DE .why-choose-us EXISTANT
+   ========================================== */
+
+.why-section {
+  padding: 60px 0;
+  background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+}
+
+.why-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* Titre */
+.why-section .section-title.with-icons.glass-style {
+  font-size: 1.5rem;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+}
+
+.why-section .title-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.why-intro {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 750px;
+  margin: 0 auto 50px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   LAYOUT : 3 CARDS + BADGE PRIX
+   ========================================== */
+
+.why-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ==========================================
+   3 CARDS AVANTAGES
+   ========================================== */
+
+.why-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.why-card {
+  /* Fallback Android */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 28px 25px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+@supports (backdrop-filter: blur(15px)) {
+  .why-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+}
+
+.why-card:hover {
+  transform: translateX(6px);
+  border-color: rgba(0, 123, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+}
+
+.why-card-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.12);
+  border-radius: 14px;
+  color: #00d4ff;
+  transition: all 0.3s ease;
+}
+
+.why-card:hover .why-card-icon {
+  background: rgba(0, 212, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.why-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================
+   BADGE PRIX PREMIUM
+   ========================================== */
+
+.why-price-badge {
+  position: sticky;
+  top: 20px;
+  /* Fallback Android */
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 20px;
+  padding: 35px 30px;
+  text-align: center;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.2),
+    0 0 60px rgba(0, 212, 255, 0.15);
+  transition: all 0.4s ease;
+}
+
+@supports (backdrop-filter: blur(20px)) {
+  .why-price-badge {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
+
+.why-price-badge:hover {
+  transform: scale(1.03);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.3),
+    0 0 80px rgba(0, 212, 255, 0.25);
+}
+
+.price-badge-content {
+  /* Pas de styles spécifiques */
+}
+
+.price-badge-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.price-badge-amount {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #00d4ff;
+  line-height: 1;
+  margin-bottom: 15px;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+}
+
+.price-badge-detail {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* ==========================================
+   RESPONSIVE POURQUOI CHOISIR
+   ========================================== */
+
+@media (max-width: 968px) {
+  .why-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .why-price-badge {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-section {
+    padding: 50px 0;
+  }
+
+  .why-section .container {
+    padding: 0 25px;
+  }
+
+  .why-section .section-title.with-icons.glass-style {
+    font-size: 1.3rem;
+    padding: 8px 24px;
+  }
+
+  .why-section .title-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .why-intro {
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  .why-cards {
+    gap: 16px;
+  }
+
+  .why-card {
+    padding: 24px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .why-card-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .price-badge-amount {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-section {
+    padding: 40px 0;
+  }
+
+  .why-section .container {
+    padding: 0 20px;
+  }
+
+  .why-section .section-title.with-icons.glass-style {
+    font-size: 1.1rem;
+    padding: 7px 20px;
+  }
+
+  .why-section .title-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .why-card {
+    padding: 22px 18px;
+  }
+
+  .price-badge-amount {
+    font-size: 2.5rem;
+  }
+
+  .why-price-badge {
+    padding: 30px 25px;
+  }
+}
+
+
+/* ==========================================
+   SECTION CONTACT - VERSION AMÉLIORÉE
+   Classes préfixées : contact-*
+   REMPLACE LE CSS DE .contact-section EXISTANT
+   ========================================== */
+
+.contact-section-new {
+  padding: 60px 0;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+.contact-section-new .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* Titre */
+.contact-section-new .section-title.with-icons.glass-style {
+  font-size: 1.5rem;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+}
+
+.contact-section-new .title-logo {
+  width: 38px;
+  height: 38px;
+}
+
+.contact-intro {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 750px;
+  margin: 0 auto 50px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   LAYOUT 2 COLONNES : INFOS + QR
+   ========================================== */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* ==========================================
+   CARDS INFOS CONTACT (GAUCHE)
+   ========================================== */
+
+.contact-info-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.contact-card {
+  /* Fallback Android */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 24px 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+@supports (backdrop-filter: blur(15px)) {
+  .contact-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 123, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+}
+
+.contact-card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.12);
+  border-radius: 12px;
+  color: #00d4ff;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-card-icon {
+  background: rgba(0, 212, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.contact-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-card p {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-link {
+  display: inline-block;
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  line-height: 1.6;
+}
+
+.contact-link:hover {
+  color: #00e8ff;
+  text-decoration: underline;
+}
+
+/* ==========================================
+   SECTION QR CODES (DROITE)
+   ========================================== */
+
+.contact-qr-section {
+  /* Fallback Android */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px 25px;
+  position: sticky;
+  top: 20px;
+}
+
+@supports (backdrop-filter: blur(15px)) {
+  .contact-qr-section {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+}
+
+.contact-qr-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-qr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.contact-qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-qr-box:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+}
+
+.contact-qr-box img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.contact-qr-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-qr-box:hover .contact-qr-label {
+  color: #00d4ff;
+}
+
+/* ==========================================
+   RESPONSIVE CONTACT
+   ========================================== */
+
+@media (max-width: 968px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-qr-section {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section-new {
+    padding: 50px 0;
+  }
+
+  .contact-section-new .container {
+    padding: 0 25px;
+  }
+
+  .contact-section-new .section-title.with-icons.glass-style {
+    font-size: 1.3rem;
+    padding: 8px 24px;
+  }
+
+  .contact-section-new .title-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-intro {
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  .contact-info-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-card {
+    padding: 22px 18px;
+  }
+
+  .contact-qr-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .contact-qr-box img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section-new {
+    padding: 40px 0;
+  }
+
+  .contact-section-new .container {
+    padding: 0 20px;
+  }
+
+  .contact-section-new .section-title.with-icons.glass-style {
+    font-size: 1.1rem;
+    padding: 7px 20px;
+  }
+
+  .contact-section-new .title-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .contact-card {
+    padding: 20px 16px;
+  }
+
+  .contact-qr-section {
+    padding: 25px 20px;
+  }
+
+  .contact-qr-title {
+    font-size: 1.15rem;
+  }
+
+  .contact-qr-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .contact-qr-box {
+    padding: 16px 14px;
+  }
+
+  .contact-qr-box img {
+    width: 85px;
+    height: 85px;
+  }
+}
 /* FOOTER */
 .footer {
     background: var(--dark-bg);
