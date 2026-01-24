@@ -149,6 +149,200 @@ galleryItems.forEach(item => {
   });
 });
 /* ==========================================
+   JS — SECTION PREMIUM pg-*
+   Multi-sliders + Modal dynamique
+   À coller en bas de script.js
+   ========================================== */
+
+(function() {
+  'use strict';
+
+  // === CONFIG IMAGES (à adapter si noms différents) ===
+  const PG_IMAGES = {
+    ext: {
+      before: 'images/pg-ext-before.jpg',
+      after: 'images/pg-ext-after.jpg',
+      title: 'Extérieur — Avant / Après'
+    },
+    int: {
+      before: 'images/pg-int-before.jpg',
+      after: 'images/pg-int-after.jpg',
+      title: 'Intérieur — Avant / Après'
+    }
+  };
+
+  // === ÉLÉMENTS DOM ===
+  const pgThumbs = document.querySelectorAll('[data-pg-slider]');
+  const pgModal = document.getElementById('pgModal');
+  const pgModalSlider = document.getElementById('pgModalSlider');
+  const pgModalClip = document.getElementById('pgModalClip');
+  const pgModalHandle = document.getElementById('pgModalHandle');
+  const pgModalBefore = document.getElementById('pgModalBefore');
+  const pgModalAfter = document.getElementById('pgModalAfter');
+  const pgModalTitle = document.getElementById('pgModalTitle');
+  const pgModalCloseButtons = document.querySelectorAll('[data-pg-modal-close]');
+
+  if (!pgModal || pgThumbs.length === 0) return;
+
+  // === VARIABLES ===
+  let pgModalDragging = false;
+  let pgActiveThumb = null;
+
+  // === UTILITAIRES ===
+  function pgClamp(val, min, max) {
+    return Math.min(Math.max(val, min), max);
+  }
+
+  function pgGetPercent(e, container) {
+    const rect = container.getBoundingClientRect();
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    return pgClamp((x - rect.left) / rect.width * 100, 0, 100);
+  }
+
+  // ==========================================
+  // THUMBNAILS (petits sliders)
+  // ==========================================
+  pgThumbs.forEach(function(thumb) {
+    const clip = thumb.querySelector('[data-pg-clip]');
+    const handle = thumb.querySelector('[data-pg-handle]');
+    let isDragging = false;
+    let startX = 0;
+
+    function updateThumb(percent) {
+      clip.style.width = percent + '%';
+      handle.style.left = percent + '%';
+    }
+
+    function onStart(e) {
+      isDragging = true;
+      startX = e.touches ? e.touches[0].clientX : e.clientX;
+      e.preventDefault();
+    }
+
+    function onMove(e) {
+      if (!isDragging) return;
+      const percent = pgGetPercent(e, thumb.querySelector('.pg-ba-thumb-inner'));
+      updateThumb(percent);
+    }
+
+    function onEnd(e) {
+      if (!isDragging) return;
+      const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+      const moved = Math.abs(endX - startX);
+      isDragging = false;
+
+      // Si quasi pas de mouvement = clic → ouvrir modal
+      if (moved < 10) {
+        pgActiveThumb = thumb;
+        pgOpenModal(thumb.dataset.pgSlider);
+      }
+    }
+
+    // Events
+    thumb.addEventListener('mousedown', onStart);
+    thumb.addEventListener('touchstart', onStart, { passive: false });
+    thumb.addEventListener('mousemove', onMove);
+    thumb.addEventListener('touchmove', onMove, { passive: true });
+    thumb.addEventListener('mouseup', onEnd);
+    thumb.addEventListener('touchend', onEnd);
+    thumb.addEventListener('mouseleave', function() { isDragging = false; });
+
+    // Clavier
+    thumb.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        pgActiveThumb = thumb;
+        pgOpenModal(thumb.dataset.pgSlider);
+      }
+    });
+
+    // Init à 50%
+    updateThumb(50);
+  });
+
+  // ==========================================
+  // MODAL
+  // ==========================================
+  function pgOpenModal(sliderId) {
+    const data = PG_IMAGES[sliderId];
+    if (!data) return;
+
+    // Charger les images
+    pgModalBefore.src = data.before;
+    pgModalAfter.src = data.after;
+    pgModalTitle.textContent = data.title;
+
+    // Reset slider à 50%
+    pgUpdateModalSlider(50);
+
+    // Ouvrir
+    pgModal.classList.add('pg-open');
+    document.body.style.overflow = 'hidden';
+
+    // Focus bouton fermer
+    setTimeout(function() {
+      const closeBtn = pgModal.querySelector('.pg-modal-close');
+      if (closeBtn) closeBtn.focus();
+    }, 100);
+  }
+
+  function pgCloseModal() {
+    pgModal.classList.remove('pg-open');
+    document.body.style.overflow = '';
+
+    // Rendre le focus au thumb
+    if (pgActiveThumb) {
+      pgActiveThumb.focus();
+      pgActiveThumb = null;
+    }
+  }
+
+  // Boutons fermer
+  pgModalCloseButtons.forEach(function(btn) {
+    btn.addEventListener('click', pgCloseModal);
+  });
+
+  // ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && pgModal.classList.contains('pg-open')) {
+      pgCloseModal();
+    }
+  });
+
+  // ==========================================
+  // SLIDER MODAL
+  // ==========================================
+  function pgUpdateModalSlider(percent) {
+    pgModalClip.style.width = percent + '%';
+    pgModalHandle.style.left = percent + '%';
+  }
+
+  function pgModalStart(e) {
+    pgModalDragging = true;
+    const percent = pgGetPercent(e, pgModalSlider);
+    pgUpdateModalSlider(percent);
+    e.preventDefault();
+  }
+
+  function pgModalMove(e) {
+    if (!pgModalDragging) return;
+    const percent = pgGetPercent(e, pgModalSlider);
+    pgUpdateModalSlider(percent);
+  }
+
+  function pgModalEnd() {
+    pgModalDragging = false;
+  }
+
+  pgModalSlider.addEventListener('mousedown', pgModalStart);
+  pgModalSlider.addEventListener('touchstart', pgModalStart, { passive: false });
+  document.addEventListener('mousemove', pgModalMove);
+  document.addEventListener('touchmove', pgModalMove, { passive: true });
+  document.addEventListener('mouseup', pgModalEnd);
+  document.addEventListener('touchend', pgModalEnd);
+
+})();
+/* ==========================================
    SLIDER GALERIE PREMIUM - VANILLA JS
    ========================================== */
 
