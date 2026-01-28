@@ -35,22 +35,100 @@ function fadeIn(element) {
 /* =========================
    BOUTONS HERO
 ========================= */
+/* =========================
+   BOUTONS HERO — Version avec menu Réservation
+   REMPLACER l'ancien code boutons hero par celui-ci
+========================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Bouton réservation → WhatsApp
+    const phoneNumber = "33670378324";
+    const phoneNumberDisplay = "06 70 37 83 24";
+
+    // === BOUTON RÉSERVATION → Menu popup ===
     const btnReservation = document.getElementById("btn-reservation");
+    
     if (btnReservation) {
-        btnReservation.addEventListener("click", () => {
-            window.open("https://wa.me/33670378324", "_blank");
+        // Créer le menu popup
+        const menu = document.createElement("div");
+        menu.className = "pg-contact-menu";
+        menu.innerHTML = `
+            <div class="pg-contact-menu-overlay"></div>
+            <div class="pg-contact-menu-content">
+                <button class="pg-contact-menu-close" aria-label="Fermer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+                <h3 class="pg-contact-menu-title">Réserver</h3>
+                <p class="pg-contact-menu-subtitle">Choisissez votre mode de contact</p>
+                <div class="pg-contact-menu-options">
+                    <a href="https://wa.me/${phoneNumber}" target="_blank" rel="noopener noreferrer" class="pg-contact-option pg-contact-whatsapp">
+                        <svg class="pg-contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        <span class="pg-contact-label">WhatsApp</span>
+                        <span class="pg-contact-hint">Réponse rapide</span>
+                    </a>
+                    <a href="tel:+${phoneNumber}" class="pg-contact-option pg-contact-phone">
+                        <svg class="pg-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span class="pg-contact-label">Appeler</span>
+                        <span class="pg-contact-hint">${phoneNumberDisplay}</span>
+                    </a>
+                    <a href="sms:+${phoneNumber}" class="pg-contact-option pg-contact-sms">
+                        <svg class="pg-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+                        </svg>
+                        <span class="pg-contact-label">SMS</span>
+                        <span class="pg-contact-hint">Envoyer un message</span>
+                    </a>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(menu);
+
+        // Ouvrir le menu
+        btnReservation.addEventListener("click", (e) => {
+            e.preventDefault();
+            menu.classList.add("pg-open");
+            document.body.style.overflow = "hidden";
+        });
+
+        // Fermer le menu
+        const closeMenu = () => {
+            menu.classList.remove("pg-open");
+            document.body.style.overflow = "";
+        };
+
+        menu.querySelector(".pg-contact-menu-close").addEventListener("click", closeMenu);
+        menu.querySelector(".pg-contact-menu-overlay").addEventListener("click", closeMenu);
+        
+        // Fermer avec ESC
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && menu.classList.contains("pg-open")) {
+                closeMenu();
+            }
+        });
+
+        // Fermer après clic sur une option (petit délai pour feedback visuel)
+        menu.querySelectorAll(".pg-contact-option").forEach(option => {
+            option.addEventListener("click", () => {
+                setTimeout(closeMenu, 150);
+            });
         });
     }
 
+    // === BOUTON DEVIS → WhatsApp direct ===
     const btnDevis = document.getElementById("btn-devis");
     if (btnDevis) {
         btnDevis.addEventListener("click", () => {
-            window.open("https://wa.me/33670378324", "_blank");
+            window.open(`https://wa.me/${phoneNumber}?text=Bonjour, je souhaite un devis gratuit.`, "_blank");
         });
     }
+
 });
 /* =========================
    NAVIGATION SMOOTH SCROLL
