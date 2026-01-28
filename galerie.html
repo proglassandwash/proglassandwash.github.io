@@ -12,7 +12,6 @@
 
 <body>
 
-  <!-- NAVBAR (la même que sur index.html) -->
   <header class="navbar">
     <div class="nav-logo">
       <img src="logo2.png" alt="Pro Glass & Wash">
@@ -24,65 +23,120 @@
     </nav>
   </header>
 
-  <!-- GALERIE -->
-   <section id="galerie" class="galerie-section">
-  <div class="container">
-    <h2 class="section-title">Galerie</h2>
+  <section class="pg-gallery-section">
+    <div class="pg-container">
+        
+        <div class="pg-header-block">
+            <h1 class="pg-title">Nos Réalisations <span class="pg-accent">.</span></h1>
+            <p class="pg-subtitle">Expertise Lavage & Vitrage</p>
+        </div>
 
-    <div class="galerie-grid">
-      <!-- IMAGES -->
-      <div class="galerie-item" data-type="image" data-src="images/galerie1.jpg">
-  <img src="images/galerie1.jpg" alt="">
-</div>
+        <div class="pg-filters-wrapper">
+            <button class="pg-filter-btn active" data-filter="all">Tout</button>
+            <button class="pg-filter-btn" data-filter="photo">Photos</button>
+            <button class="pg-filter-btn" data-filter="video">Vidéos</button>
+            </div>
 
-<div class="galerie-item" data-type="image" data-src="images/galerie2.jpg">
-  <img src="images/galerie2.jpg" alt="">
-</div>
+        <div class="pg-gallery-grid">
+            
+            <div class="pg-gallery-item" data-type="image" data-category="photo" data-src="images/galerie1.jpg">
+                <img src="images/galerie1.jpg" alt="Réalisation Lavage" loading="lazy">
+                <div class="pg-overlay">
+                    <span class="pg-category-tag">Lavage</span>
+                    <h3 class="pg-item-title">Rénovation Extérieure</h3>
+                </div>
+            </div>
 
-<div class="galerie-item" data-type="image" data-src="images/galerie3.jpg">
-  <img src="images/galerie3.jpg" alt="">
-</div>
+            <div class="pg-gallery-item" data-type="image" data-category="photo" data-src="images/galerie2.jpg">
+                <img src="images/galerie2.jpg" alt="Réalisation Vitrage" loading="lazy">
+                <div class="pg-overlay">
+                    <span class="pg-category-tag">Vitrage</span>
+                    <h3 class="pg-item-title">Nettoyage Vitre</h3>
+                </div>
+            </div>
 
-  <div class="galerie-item" data-type="image" data-src="images/galerie4.jpg">
-  <img src="images/galerie4.jpg" alt="">
-</div>
+            <div class="pg-gallery-item" data-type="image" data-category="photo" data-src="images/galerie3.jpg">
+                <img src="images/galerie3.jpg" alt="Detailing" loading="lazy">
+                <div class="pg-overlay">
+                    <span class="pg-category-tag">Detailing</span>
+                    <h3 class="pg-item-title">Finitions Précises</h3>
+                </div>
+            </div>
 
-     <div class="galerie-item" data-type="image" data-src="images/galerie5.jpg">
-  <img src="images/galerie5.jpg" alt="">
-</div>
+            <div class="pg-gallery-item" data-type="image" data-category="photo" data-src="images/galerie4.jpg">
+                <img src="images/galerie4.jpg" alt="Lavage Auto" loading="lazy">
+                <div class="pg-overlay">
+                    <span class="pg-category-tag">Auto</span>
+                    <h3 class="pg-item-title">Shampoing Carrosserie</h3>
+                </div>
+            </div>
 
-     <div class="galerie-item" data-type="image" data-src="images/galerie6.jpg">
-  <img src="images/galerie6.jpg" alt="">
-</div>
+             <div class="pg-gallery-item" data-type="image" data-category="photo" data-src="images/galerie5.jpg">
+                <img src="images/galerie5.jpg" alt="Lavage Auto" loading="lazy">
+                <div class="pg-overlay">
+                    <span class="pg-category-tag">Auto</span>
+                    <h3 class="pg-item-title">Préparation</h3>
+                </div>
+            </div>
 
-      <!-- VIDEOS -->
-  <div class="galerie-item video" 
-     data-type="video" 
-     data-src="images/video1.mp4">
+             <div class="pg-gallery-item" data-type="image" data-category="photo" data-src="images/galerie6.jpg">
+                <img src="images/galerie6.jpg" alt="Lavage Auto" loading="lazy">
+                <div class="pg-overlay">
+                    <span class="pg-category-tag">Auto</span>
+                    <h3 class="pg-item-title">Résultat Final</h3>
+                </div>
+            </div>
 
-  <img src="images/video1-thumb.jpg" alt="Vidéo lavage auto">
-  <span class="play-icon">▶</span>
+            <div class="pg-gallery-item video-card" data-type="video" data-category="video" data-src="images/video1.mp4">
+                <img src="images/video1-thumb.jpg" alt="Vidéo lavage" loading="lazy">
+                <div class="pg-play-btn">▶</div>
+                <div class="pg-overlay">
+                    <span class="pg-category-tag">Vidéo</span>
+                    <h3 class="pg-item-title">Démonstration Lavage</h3>
+                </div>
+            </div>
 
-</div>
+            <div class="pg-gallery-item video-card" data-type="video" data-category="video" data-src="images/video2.mp4">
+                <img src="images/video2-thumb.jpg" alt="Vidéo vitrage" loading="lazy">
+                <div class="pg-play-btn">▶</div>
+                <div class="pg-overlay">
+                    <span class="pg-category-tag">Vidéo</span>
+                    <h3 class="pg-item-title">Technique Vitrage</h3>
+                </div>
+            </div>
 
-<div class="galerie-item video" 
-     data-type="video" 
-     data-src="images/video2.mp4">
-
-  <img src="images/video2-thumb.jpg" alt="Vidéo lavage auto">
-  <span class="play-icon">▶</span>
-
-</div>
-
-</div>
-</div>
-</section>
+        </div>
+    </div>
+  </section>
       
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close">&times;</span>
-    <img class="lightbox-img">
-    <video class="lightbox-video" controls></video>
+  <div id="pg-lightbox" class="pg-lightbox" aria-hidden="true">
+    <div class="pg-lightbox-backdrop"></div>
+    
+    <div class="pg-lightbox-content">
+        <button class="pg-close-btn" aria-label="Fermer">✕</button>
+        
+        <button class="pg-nav-btn pg-prev" aria-label="Précédent">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        
+        <div class="pg-media-wrapper">
+            <img src="" alt="Agrandissement" id="pg-lightbox-img" class="pg-media-element">
+            
+            <video id="pg-lightbox-video" class="pg-media-element" controls playsinline>
+                <source src="" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+
+            <div class="pg-lightbox-caption">
+                <span id="pg-counter">1 / 8</span>
+                <h3 id="pg-caption-title">Titre du projet</h3>
+            </div>
+        </div>
+
+        <button class="pg-nav-btn pg-next" aria-label="Suivant">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+    </div>
   </div>
 
   <script src="galerie.js"></script>
