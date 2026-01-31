@@ -9,5 +9,3 @@ Allow: /
 
 User-agent: Twitterbot
 Allow: /
-
-Sitemap: https://proglassandwash.fr/sitemap.xml
