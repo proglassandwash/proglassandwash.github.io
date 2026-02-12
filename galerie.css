@@ -1002,3 +1002,7 @@
 .nav-links a {
   font-size: 0.8rem;
 }
+.pg-tag-shampouinage {
+  background: rgba(236, 72, 153, 0.1);
+  color: #ec4899;
+}
