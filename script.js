@@ -191,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ========================= */
 window.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
+    if (!navbar) return;
 
     if (window.scrollY > 100) {
         navbar.style.background = "hsla(0, 0%, 4%, 0.90)";
@@ -206,26 +207,39 @@ const lightboxImg = document.querySelector(".lightbox-img");
 const lightboxVideo = document.querySelector(".lightbox-video");
 const closeBtn = document.querySelector(".lightbox-close");
 
-galleryItems.forEach(item => {
-  item.addEventListener("click", () => {
-    const img = item.querySelector("img");
-    const video = item.querySelector("video");
+if (galleryItems.length && lightbox && lightboxImg && lightboxVideo) {
+  galleryItems.forEach(item => {
+    item.addEventListener("click", () => {
+      const img = item.querySelector("img");
+      const video = item.querySelector("video");
 
-    lightbox.style.display = "flex";
+      lightbox.style.display = "flex";
 
-    if (img) {
-      lightboxVideo.src = video.querySelector("source").src;
-      lightboxImg.style.display = "block";
-      lightboxVideo.style.display = "none";
-    }
+      if (img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || "Aperçu";
+        lightboxImg.style.display = "block";
+        lightboxVideo.style.display = "none";
+        lightboxVideo.pause();
+        lightboxVideo.removeAttribute("src");
+      }
 
-    if (video) {
-      lightboxVideo.src = video.src;
-      lightboxVideo.style.display = "block";
-      lightboxImg.style.display = "none";
-    }
+      if (video) {
+        const source = video.querySelector("source");
+        lightboxVideo.src = source ? source.src : video.src;
+        lightboxVideo.style.display = "block";
+        lightboxImg.style.display = "none";
+      }
+    });
   });
-});
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      lightbox.style.display = "none";
+      lightboxVideo.pause();
+    });
+  }
+}
 /* ==========================================
    JS — SECTION PREMIUM pg-*
    Multi-sliders + Modal dynamique
@@ -419,6 +433,44 @@ galleryItems.forEach(item => {
   document.addEventListener('mouseup', pgModalEnd);
   document.addEventListener('touchend', pgModalEnd);
 
+})();
+
+/* ==========================================
+   TRACKING CTA + OPTIMISATIONS UX
+   ========================================== */
+(function () {
+  "use strict";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const heroVideo = document.getElementById("heroVideo");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (heroVideo && reducedMotion.matches) {
+      heroVideo.pause();
+      heroVideo.removeAttribute("autoplay");
+      heroVideo.setAttribute("controls", "controls");
+    }
+
+    const pushTrackingEvent = (name, payload) => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: name, ...payload });
+    };
+
+    document.querySelectorAll("a[href]").forEach((anchor) => {
+      anchor.addEventListener("click", () => {
+        const href = anchor.getAttribute("href") || "";
+        if (href.startsWith("tel:")) {
+          pushTrackingEvent("cta_phone_click", { href });
+        } else if (href.includes("wa.me")) {
+          pushTrackingEvent("cta_whatsapp_click", { href });
+        } else if (href.startsWith("mailto:")) {
+          pushTrackingEvent("cta_email_click", { href });
+        } else if (href.includes("maps.google") || href.includes("google.com/maps")) {
+          pushTrackingEvent("cta_maps_click", { href });
+        }
+      });
+    });
+  });
 })();
 /* ==========================================
    SLIDER GALERIE PREMIUM - VANILLA JS

@@ -54,6 +54,47 @@
     <!-- Meta sécurité basique (compatible GitHub Pages) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDetailing",
+      "name": "Pro Glass & Wash",
+      "image": "https://proglassandwash.fr/preview-whatsapp2.jpg",
+      "url": "https://proglassandwash.fr/",
+      "telephone": "+33670378324",
+      "email": "proglassandwash@gmail.com",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2 Rue Chance Milly",
+        "postalCode": "92110",
+        "addressLocality": "Clichy",
+        "addressCountry": "FR"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "19:00"
+        }
+      ],
+      "areaServed": "Ile-de-France",
+      "sameAs": [
+        "https://www.instagram.com/proglasswash/",
+        "https://www.tiktok.com/@proglasswash"
+      ]
+    }
+    </script>
 
 </head>
 <body>
@@ -71,7 +112,7 @@
   <div class="hero-overlay"></div>
   
   <!-- Vidéo optimisée -->
-  <video autoplay muted loop playsinline id="heroVideo" class="hero-video">
+  <video autoplay muted loop playsinline preload="metadata" id="heroVideo" class="hero-video">
     <source src="videos/ta-video.mp4" type="video/mp4">
   </video>
   
@@ -329,7 +370,7 @@
                     <a href="#service-carrosserie" class="service-card"><h3>Carrosserie</h3></a>
                     <a href="#service-pare-brise-express" class="service-card"><h3>Pare-brise express</h3></a>
                     <a href="#service-covering" class="service-card"><h3>Covering / PPF / Vitre Teintée</h3></a>
-                    <a href="#service-polissage/lustrage" class="service-card"><h3>Polissage / Lustrage</h3></a>
+                    <a href="#service-polissage-lustrage" class="service-card"><h3>Ceramique / Polissage / Lustrage</h3></a>
                 </div>
             </div>
         <section id="service-lavage" class="service-detail">
@@ -1046,7 +1087,7 @@
      À COLLER APRÈS LA SECTION #service-covering
      ========================================== -->
 
-<section id="service-polissage/lustrage" class="plc-section">
+<section id="service-polissage-lustrage" class="plc-section">
   <div class="container">
     
     <!-- Titre -->
@@ -1426,7 +1467,7 @@
           <img src="qrcodes/qr-tiktok.png" alt="TikTok">
           <span>TikTok</span>
         </a>
-        <a href="https://g.co/kgs/..." target="_blank" rel="noopener" class="fc-social-item">
+        <a href="https://www.google.com/search?q=pro+glass+%26+wash+clichy" target="_blank" rel="noopener" class="fc-social-item">
           <img src="qrcodes/qr-google.png" alt="Google">
           <span>Google</span>
         </a>
@@ -1460,6 +1501,11 @@
   </div>
 </footer>
 
-<script src="script.js?v=2.2"></script>
+<div class="mobile-sticky-cta" aria-label="Actions rapides">
+  <a href="tel:+33670378324" class="mobile-sticky-cta-link mobile-sticky-phone">Appeler</a>
+  <a href="https://wa.me/33670378324?text=Bonjour%2C%20je%20souhaite%20un%20rendez-vous." target="_blank" rel="noopener noreferrer" class="mobile-sticky-cta-link mobile-sticky-whatsapp">WhatsApp</a>
+</div>
+
+<script src="script.js?v=2.3"></script>
 </body>
 </html>
